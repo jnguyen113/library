@@ -1,1 +1,35 @@
-
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+    <body>
+        <div id="container">
+            <h1>Welcome to the Library</h1>
+        </div>
+        <button onclick="toggleForm()" id="newBookBtn">Add a Book</button>
+        <div id="library"><ul id="list"></ul></div>
+        <div class="form-popup" id="myForm">
+            <form onsubmit="return false" id="formContainer" class="form-container">
+            <h1>New Book</h1>
+            
+            <div id="Book-Title">
+                <label for="title"><b>Book Title</b></label>
+                <input type="text" id="title" placeholder="Enter Book Title" name="title" required>
+            </div>
+            <div id="Book Author">
+                <label for"author><b>Author</b></label>
+                <input type="text" id="author" placeholder="Enter Author" required>
+            </div>
+            <div id="Pages">
+                <label for"pages><b>Number of Pages</b></label>
+                <input type="number" id="pages" placeholder="Enter Number of Pages" required>
+            </div>
+            <fieldset>
+                <input id="status" type="checkbox"><label for="input-read">Read it?</label>
+            </fieldset>
+            <button id="addBook">Add Book!</button>
+            </form>
+        </div>
+        
+    </body>
+    <script src="script.js"></script>
+</html>
