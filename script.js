@@ -23,11 +23,14 @@ Book.prototype.addToLibrary = function () {
 };
 
 
+
+
 const addBook = document.getElementById("addBook");
 addBook.addEventListener("click", function () {
   let status = document.getElementById("status").checked ? "Read" : "Unread";
   //getting the value of the what's in the text box
-  let title = document.getElementById("title").value;
+  let title = document.createElement('p');
+  title = document.getElementById("title").value;
   var clearTitle = (document.getElementById("title").value = "");
 
   let author = document.getElementById("author").value;
@@ -40,8 +43,11 @@ addBook.addEventListener("click", function () {
   book.addToLibrary();
   //first you want to create the element list
   var li = document.createElement("li");
-  li.innerText = `Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Read: ${status}`;
 
+  // var storeBooks = JSON.parse(localStorage.getItem("library"));
+  // console.log(storeBooks);
+
+  li.innerText = `Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Read: ${status}`;
   console.log(library[index]);
   var remove = document.createElement("button");
   remove.classList.add("remove");
@@ -55,6 +61,7 @@ addBook.addEventListener("click", function () {
     library.splice(this.parentNode.id, 1);
       this.parentNode.remove();
   });
+
 });
 
 //button to show form-popup
@@ -90,3 +97,12 @@ book.prototype.info = function () {
 book.prototype.changeReadStatus = function () {
   this.read ? (this.read = false) : (this.read = true);
 };
+
+function loadBooks(){
+  let retrievedData = localStorage.getItem("library");
+  library = JSON.parse(retrievedData);
+  if(!(Array.isArray(library) && library.length)){
+    library = [];
+  }
+}
+window.onload = loadBooks;
